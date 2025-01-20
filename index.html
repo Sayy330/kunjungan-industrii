@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/feather-icons"></script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="website icon" type="png" href="logo skinfa.jpeg">
+  <title>Laporan KI</title>
+  
+</head>
+<body>
+     <!-- navbar start -->
+   <nav class="navbar">
+    <a href="#" class="navbar-logo">Laporan <span id="ki">KI</span></a>
+     
+    <div class="navbar-nav">
+    <a href="#hero"><span id="home">Beranda</span></a>
+    <a href="chlorine.html">PT.Chlorine</a>
+    <a href="unikom.html">Unikom</a>
+    <a href="ciwalk.html">Ciwalk</a>
+
+    </div>
+    
+    <!-- <div class="navbar-ekstra">
+      <a href="#" id="search"> <i data-feather="search"></i></a>
+      <a href="#" id="shooping-cart"><i data-feather="shopping-cart"></i></a>
+      <a href="#" id="hamburger-menu"> <i data-feather="menu"></i></a>
+    </div> -->
+
+  </nav>
+<!-- navbar end -->
+
+<!-- Hero section start -->
+<section class="hero" id="hero">
+
+  <main class="content">
+      <h1>Selamat datang di<span> website saya</span></h1>
+      <p>Laporan hasil kunjungan industri ke Bandung pada tanggal 14 januari 2024</p>
+      <a href="#" class="cta">Gallery</a>
+  </main>
+  
+ </section>
+<!-- Hero section end -->
+
+
+<!-- slide image -->
+
+<!-- <div class="slider-container">
+    <div class="slides">
+      <img src="bgbg.jpg" alt="Slide 1">
+      <img src="bgbg.jpg" alt="Slide 2">
+      <img src="share.png" alt="Slide 3">
+      <img src="image in bus.jpg" alt="Slide 4">
+    </div>
+    <div class="navigation">
+      <button id="prev">&lt;</button>
+      <button id="next">&gt;</button>
+    </div>
+    <div class="indicators"></div>
+  </div> -->
+
+<!-- slide image end -->
+
+ <!-- About section start -->
+ <section id="about" class="about">
+  <h2>Perjalanan ke Bandung</h2>
+  <div class="row">
+      <div class="about-img">
+          <img src="in bus.jpg" alt="Perjalanan">
+      </div>
+      <div class="content">
+          <h3>Perjalanan</h3>
+          <p>Perjalanan ke Bandung begitu lancar dan tidak ada hambatan, kami menuju Bandung pada hari selasa tanggan 14 januari 2025, kami berangkat ke Bandung pada jam 5, kami tiba di Bandung pada jam 9(sepertinya,saya lupa),saat tiba di Bandung kami langsung menuju PT.chlorine.</p>
+      </div>
+  </div>
+  <div class="row2">
+      <div class="about-img">
+          <img src="image in bus.jpg" alt="bus">
+      </div>
+      <div class="content">
+          <h3>Saat di bis</h3>
+          <p>Saat di bis saya hanya bermain game dan tidur, kemudian pada pukul 7atau8 kami berhenti di rest area untuk makan sarapan setelah sarapan kami melanjutkan perjanan ke Bandung.</p>
+      </div>
+  </div>
+ </section>
+<!-- About section end -->
+
+ <!-- footer -->
+ <footer class="footer">
+  <div class="footer-container">
+    <!-- Navigasi Cepat -->
+    <div class="footer-section">
+      <h3>Navigasi</h3>
+      <ul>
+        <li><a href="#hero">Beranda</a></li>
+        <li><a href="chlorine.html">Chlorine</a></li>
+        <li><a href="unikom.html">Unikom</a></li>
+        <li><a href="ciwalk.html">Ciwalk</a></li>
+      </ul>
+    </div>
+
+    <!-- Informasi Kontak -->
+    <div class="footer-section">
+      <h3>Kontak Kami</h3>
+      <!-- <p><strong>Alamat:</strong> Jl. Industri No.1, Jakarta</p>
+      <p><strong>Email:</strong> info@kunjunganindustri.com</p>
+      <p><strong>Telepon:</strong> +62 812 3456 7890</p> -->
+      <div class="social-icons">
+        <a href="#"><i data-feather="facebook"></i></a>
+        <a href="#"><i data-feather="twitter"></i></a>
+        <a href="#"><i data-feather="instagram"></i></a>
+        <a href="#"><i data-feather="linkedin"></i></a>
+      </div>
+    </div>
+
+    <!-- Hak Cipta -->
+    <div class="footer-section">
+      <h3>Tentang Kami</h3>
+      <p>
+        Kunjungan Industri bertujuan untuk memberikan pengalaman langsung kepada para peserta dalam memahami dunia kerja. Bergabunglah untuk menjelajahi lebih banyak!
+      </p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 Kunjungan Industri@sayidina | Semua Hak Dilindungi</p>
+  </div>
+</footer>
+
+
+
+<script>
+  feather.replace();
+</script>
+
+<script>
+   const slides = document.querySelector('.slides');
+    const slideImages = document.querySelectorAll('.slides img');
+    const prevButton = document.getElementById('prev');
+    const nextButton = document.getElementById('next');
+    const indicatorsContainer = document.querySelector('.indicators');
+
+    let index = 0;
+    let autoPlayInterval;
+
+    // Create indicators
+    slideImages.forEach((_, i) => {
+      const indicator = document.createElement('button');
+      indicator.dataset.index = i;
+      indicator.addEventListener('click', () => showSlide(i));
+      indicatorsContainer.appendChild(indicator);
+    });
+
+    const indicators = document.querySelectorAll('.indicators button');
+
+    function showSlide(newIndex) {
+      if (newIndex < 0) {
+        index = slideImages.length - 1;
+      } else if (newIndex >= slideImages.length) {
+        index = 0;
+      } else {
+        index = newIndex;
+      }
+      const offset = -index * slideImages[0].offsetWidth;
+      slides.style.transform = `translateX(${offset}px)`;
+      updateIndicators();
+    }
+
+    function updateIndicators() {
+      indicators.forEach((button, i) => {
+        button.classList.toggle('active', i === index);
+      });
+    }
+
+    function startAutoPlay() {
+      autoPlayInterval = setInterval(() => showSlide(index + 1), 3000);
+    }
+
+    function stopAutoPlay() {
+      clearInterval(autoPlayInterval);
+    }
+
+    prevButton.addEventListener('click', () => {
+      stopAutoPlay();
+      showSlide(index - 1);
+      startAutoPlay();
+    });
+
+    nextButton.addEventListener('click', () => {
+      stopAutoPlay();
+      showSlide(index + 1);
+      startAutoPlay();
+    });
+
+    // Handle window resize for responsiveness
+    window.addEventListener('resize', () => {
+      showSlide(index); // Adjust position on resize
+    });
+
+    // Initialize slider
+    showSlide(index);
+    startAutoPlay();
+  </script>
+</body>
+</html>
